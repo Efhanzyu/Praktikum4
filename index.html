@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPOT BOX Photo Booth – Abadikan Momenmu</title>
+    <style>
+         :root {
+            --bg: #0B0E14;
+            --surface: #161B22;
+            --surface-hover: #1C2128;
+            --primary: #8B5CF6;
+            --primary-hover: #7C3AED;
+            --accent: #F472B6;
+            --text-main: #F0F6FC;
+            --text-dim: #8B949E;
+            --border: #30363D;
+            --glass: rgba(11, 14, 20, 0.8);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        /* ── NAVIGATION ── */
+        
+        nav {
+            background: var(--glass);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--text-main);
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color .2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+        
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .nav-cta:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+        /* ── HERO ── */
+        
+        .hero {
+            padding: 120px 5% 80px;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(139, 92, 246, 0.1) 0%, transparent 60%);
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-outline:hover {
+            background: var(--surface);
+            border-color: var(--text-dim);
+        }
+        /* ── STATS ── */
+        
+        .stats {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+        /* ── SECTIONS ── */
+        
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+        
+        .section-sub {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 60px;
+            font-size: 1rem;
+        }
+        /* ── CARDS (PAKET) ── */
+        
+        .paket-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .paket-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .paket-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+        }
+        
+        .paket-card.featured {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(0, 0, 0, 0));
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        
+        .badge-popular {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        
+        .paket-name {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+        
+        .paket-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+        }
+        
+        .paket-features {
+            list-style: none;
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+        
+        .paket-features li {
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .paket-features li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .paket-btn {
+            display: block;
+            text-align: center;
+            padding: 14px;
+            background: var(--surface-hover);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        
+        .paket-card.featured .paket-btn {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        
+        .paket-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+        /* ── CARA KERJA ── */
+        
+        .cara-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+        }
+        
+        .cara-item {
+            text-align: center;
+        }
+        
+        .cara-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 20px;
+        }
+        
+        .cara-step {
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        
+        .cara-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .cara-desc {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+        /* ── FORMS ── */
+        
+        #booking {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        
+        .form-sub {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 32px;
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 8px;
+        }
+        
+        input,
+        select {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+        
+        input:focus,
+        select:focus {
+            border-color: var(--primary);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-hover);
+        }
+        
+        .form-result {
+            display: none;
+            margin-top: 20px;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .form-result.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+        
+        .form-result.error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+        /* ── TABLE ── */
+        
+        .table-wrap {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+        
+        th {
+            background: rgba(255, 255, 255, 0.03);
+            text-align: left;
+            padding: 16px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.01);
+        }
+        
+        .badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .badge-menunggu {
+            background: rgba(245, 158, 11, 0.1);
+            color: #F59E0B;
+        }
+        
+        .badge-berlangsung {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3B82F6;
+        }
+        
+        .badge-selesai {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+        }
+        
+        .badge-dibatalkan {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+        
+        .refresh-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-bottom: 24px;
+            transition: all 0.2s;
+        }
+        
+        .refresh-btn:hover {
+            border-color: var(--text-dim);
+        }
+        
+        .empty-message {
+            text-align: center;
+            padding: 30px;
+            color: #9CA3AF;
+        }
+        
+        .loading-message {
+            text-align: center;
+            padding: 20px;
+            color: #9CA3AF;
+        }
+        
+        .error-message {
+            text-align: center;
+            padding: 20px;
+            color: #EF4444;
+        }
+        
+        .update-btn {
+            background: #7C3AED;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: .8rem;
+        }
+        
+        .delete-btn {
+            background: #EF4444;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: .8rem;
+            margin-left: 4px;
+        }
+        /* ── FOOTER ── */
+        
+        footer {
+            padding: 80px 5% 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+        
+        footer strong {
+            color: var(--text-main);
+        }
+        
+        footer p+p {
+            margin-top: 6px;
+        }
+        
+        #cara-kerja {
+            background: transparent;
+            margin: 0 auto;
+            padding: 100px 5%;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            nav .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">SPOT<span>BOX</span> 📸</div>
+        <div class="nav-links">
+            <a href="#paket">Paket</a>
+            <a href="#cara-kerja">Cara Kerja</a>
+            <a href="#booking">Booking</a>
+            <a href="#data-sesi">Data Sesi</a>
+            <a href="#booking" class="nav-cta">Booking Sekarang</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-badge">📸 Photo Booth Terbaik 2025</div>
+        <h1>Abadikan Momen<br>Paling <span>Berharga</span></h1>
+        <p>Nikmati pengalaman foto yang menyenangkan dengan berbagai paket pilihan, prop lucu, dan cetak foto langsung di tempat!</p>
+        <div class="hero-btns">
+            <a href="#booking" class="btn-primary">🎉 Book Sekarang</a>
+            <a href="#paket" class="btn-outline">Lihat Paket</a>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num">5.000+</div>
+            <div class="stat-label">Sesi Foto</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Prop Tersedia</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">4.9★</div>
+            <div class="stat-label">Rating Pelanggan</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">3 Menit</div>
+            <div class="stat-label">Cetak Foto</div>
+        </div>
+    </div>
+
+    <!-- PAKET -->
+    <section id="paket">
+        <div class="section-title">Pilih Paket Terbaik ✨</div>
+        <div class="section-sub">Semua paket sudah termasuk cetak foto & props gratis</div>
+        <div class="paket-grid">
+
+            <div class="paket-card">
+                <div class="paket-name">Basic</div>
+                <div class="paket-price">Rp 25.000</div>
+                <ul class="paket-features">
+                    <li>5 Foto Digital</li>
+                    <li>1 Strip Cetak (4R)</li>
+                    <li>Props Dasar</li>
+                    <li>Background Polos</li>
+                </ul>
+                <a href="#booking" class="paket-btn" onclick="pilihPaket('Basic', 5)">Pilih Paket</a>
+            </div>
+
+            <div class="paket-card featured">
+                <div class="badge-popular">TERPOPULER</div>
+                <div class="paket-name">Standard</div>
+                <div class="paket-price">Rp 50.000</div>
+                <ul class="paket-features">
+                    <li>10 Foto Digital</li>
+                    <li>2 Strip Cetak (4R)</li>
+                    <li>Props Lengkap</li>
+                    <li>5 Pilihan Background</li>
+                    <li>Filter Kamera</li>
+                </ul>
+                <a href="#booking" class="paket-btn" onclick="pilihPaket('Standard', 10)">Pilih Paket</a>
+            </div>
+
+            <div class="paket-card">
+                <div class="paket-name">Premium</div>
+                <div class="paket-price">Rp 85.000</div>
+                <ul class="paket-features">
+                    <li>20 Foto Digital</li>
+                    <li>4 Strip Cetak (4R)</li>
+                    <li>Props Eksklusif</li>
+                    <li>Background Custom</li>
+                    <li>Filter Premium + GIF</li>
+                    <li>Video Highlight 30s</li>
+                </ul>
+                <a href="#booking" class="paket-btn" onclick="pilihPaket('Premium', 20)">Pilih Paket</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CARA KERJA -->
+    <section id="cara-kerja">
+        <div class="section-title">Cara Kerja 🎯</div>
+        <div class="section-sub">Prosesnya mudah & cepat, hanya 4 langkah!</div>
+        <div class="cara-grid">
+            <div class="cara-item">
+                <div class="cara-icon">📋</div>
+                <div class="cara-step">Langkah 1</div>
+                <div class="cara-title">Pilih Paket</div>
+                <div class="cara-desc">Pilih paket yang sesuai kebutuhan & budget kamu</div>
+            </div>
+            <div class="cara-item">
+                <div class="cara-icon">📅</div>
+                <div class="cara-step">Langkah 2</div>
+                <div class="cara-title">Booking Online</div>
+                <div class="cara-desc">Isi form booking dan pilih jadwal yang tersedia</div>
+            </div>
+            <div class="cara-item">
+                <div class="cara-icon">📸</div>
+                <div class="cara-step">Langkah 3</div>
+                <div class="cara-title">Foto Seru</div>
+                <div class="cara-desc">Datang ke studio & berpose dengan props favoritmu</div>
+            </div>
+            <div class="cara-item">
+                <div class="cara-icon">🖨️</div>
+                <div class="cara-step">Langkah 4</div>
+                <div class="cara-title">Cetak & Bawa Pulang</div>
+                <div class="cara-desc">Foto langsung dicetak dan bisa kamu bawa pulang!</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING FORM -->
+    <section class="booking-section">
+        <div id="booking">
+            <div class="form-title">🎉 Booking Sesi Foto</div>
+            <div class="form-sub">Isi data di bawah dan kami akan konfirmasi segera</div>
+
+            <div class="form-group">
+                <label for="nama">Nama Pelanggan</label>
+                <input type="text" id="nama" placeholder="Nama lengkap kamu" />
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="paket">Pilih Paket</label>
+                    <select id="paket">
+                <option value="">-- Pilih Paket --</option>
+                <option value="Basic">Basic – Rp 25.000</option>
+                <option value="Standard">Standard – Rp 50.000</option>
+                <option value="Premium">Premium – Rp 85.000</option>
+            </select>
+                </div>
+                <div class="form-group">
+                    <label for="jumlah">Jumlah Foto</label>
+                    <input type="number" id="jumlah" placeholder="cth: 5" min="1" max="50" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tanggal">Tanggal & Waktu</label>
+                <input type="datetime-local" id="tanggal" title="Pilih tanggal dan waktu sesi foto" onclick="this.showPicker()" />
+            </div>
+
+            <button class="submit-btn" onclick="bookingSesi()">📸 Buat Booking</button>
+            <div id="form-result" class="form-result"></div>
+        </div>
+    </section>
+
+    <!-- DATA SESI -->
+    <section id="data-sesi">
+        <div class="section-title">Data Sesi Aktif 📊</div>
+        <div class="section-sub">Pantau semua sesi photo booth secara real-time</div>
+        <button class="refresh-btn" onclick="loadSesi()">🔄 Refresh Data</button>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nama Pelanggan</th>
+                        <th>Paket</th>
+                        <th>Jumlah Foto</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="tabel-sesi">
+                    <tr>
+                        <td colspan="8" class="empty-message">Klik Refresh Data untuk memuat...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 <strong>SPOT BOX Photo Booth</strong> — Praktikum 4 REST API PHP</p>
+        <p>Dibuat untuk mata kuliah Pemrograman Web | Dosen: Ir. Alam Rahmatulloh, S.T., M.T., MCE., IPM.</p>
+    </footer>
+
+    <script>
+        const BASE = '.';
+
+        // Format rupiah
+        function rupiah(n) {
+            return 'Rp ' + parseInt(n).toLocaleString('id-ID');
+        }
+
+        // Badge status
+        function badgeStatus(s) {
+            const cls = {
+                'Menunggu': 'badge-menunggu',
+                'Berlangsung': 'badge-berlangsung',
+                'Selesai': 'badge-selesai',
+                'Dibatalkan': 'badge-dibatalkan'
+            };
+            return `<span class="badge ${cls[s] || 'badge-menunggu'}">${s}</span>`;
+        }
+
+        // Format tanggal
+        function formatTgl(t) {
+            const d = new Date(t);
+            return d.toLocaleString('id-ID', {
+                dateStyle: 'medium',
+                timeStyle: 'short'
+            });
+        }
+
+        // LOAD semua sesi (GET)
+        async function loadSesi() {
+            const tbody = document.getElementById('tabel-sesi');
+            tbody.innerHTML = '<tr><td colspan="8" class="loading-message">⏳ Memuat data...</td></tr>';
+            try {
+                const res = await fetch(`${BASE}/read.php`);
+                const json = await res.json();
+                if (res.status === 200 && json.data) {
+                    tbody.innerHTML = json.data.map(s => `
+                    <tr>
+                        <td>${s.id}</td>
+                        <td><strong>${s.nama_pelanggan}</strong></td>
+                        <td>${s.paket}</td>
+                        <td>${s.jumlah_foto} foto</td>
+                        <td>${formatTgl(s.tanggal)}</td>
+                        <td>${badgeStatus(s.status)}</td>
+                        <td>${rupiah(s.total_harga)}</td>
+                        <td>
+                            <button onclick="updateStatus(${s.id}, '${s.status}')" class="update-btn">
+                                ✏️ Update
+                            </button>
+                            <button onclick="hapusSesi(${s.id})" class="delete-btn">
+                                🗑️
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="8" class="empty-message">📭 ${json.message || 'Belum ada data'}</td></tr>`;
+                }
+            } catch (e) {
+                tbody.innerHTML = '<tr><td colspan="8" class="error-message">❌ Gagal terhubung ke API. Pastikan server berjalan.</td></tr>';
+            }
+        }
+
+        // CREATE sesi baru (POST)
+        async function bookingSesi() {
+            const nama = document.getElementById('nama').value.trim();
+            const paket = document.getElementById('paket').value;
+            const jumlah = parseInt(document.getElementById('jumlah').value);
+            const tanggal = document.getElementById('tanggal').value;
+            const result = document.getElementById('form-result');
+
+            if (!nama || !paket || !jumlah || !tanggal) {
+                showResult('⚠️ Semua field wajib diisi!', 'error');
+                return;
+            }
+
+            const payload = {
+                nama_pelanggan: nama,
+                paket: paket,
+                jumlah_foto: jumlah,
+                tanggal: tanggal.replace('T', ' ')
+            };
+
+            try {
+                const res = await fetch(`${BASE}/create.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const json = await res.json();
+                if (res.status === 201) {
+                    showResult(`✅ Booking berhasil! Paket: ${json.data.paket} — ${rupiah(json.data.total_harga)}`, 'success');
+                    // Reset form
+                    document.getElementById('nama').value = '';
+                    document.getElementById('paket').value = '';
+                    document.getElementById('jumlah').value = '';
+                    document.getElementById('tanggal').value = '';
+                    loadSesi();
+                } else {
+                    showResult('❌ ' + json.message, 'error');
+                }
+            } catch (e) {
+                showResult('❌ Gagal terhubung ke server.', 'error');
+            }
+        }
+
+        // UPDATE status sesi (PUT)
+        async function updateStatus(id, currentStatus) {
+            const statuses = ['Menunggu', 'Berlangsung', 'Selesai', 'Dibatalkan'];
+            const idx = statuses.indexOf(currentStatus);
+            const newStatus = prompt(
+                `Ganti status sesi #${id}\nStatus saat ini: ${currentStatus}\n\nMasukkan status baru:\n1. Menunggu\n2. Berlangsung\n3. Selesai\n4. Dibatalkan`,
+                statuses[(idx + 1) % statuses.length]
+            );
+            if (!newStatus || !statuses.includes(newStatus)) return;
+
+            try {
+                const res = await fetch(`${BASE}/update.php`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id,
+                        status: newStatus
+                    })
+                });
+                const json = await res.json();
+                if (res.status === 200) {
+                    alert('✅ Status berhasil diperbarui!');
+                    loadSesi();
+                } else alert('❌ ' + json.message);
+            } catch (e) {
+                alert('❌ Gagal terhubung.');
+            }
+        }
+
+        // DELETE sesi (DELETE)
+        async function hapusSesi(id) {
+            if (!confirm(`Yakin hapus sesi #${id}?`)) return;
+            try {
+                const res = await fetch(`${BASE}/delete.php`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id
+                    })
+                });
+                const json = await res.json();
+                if (res.status === 200) {
+                    alert('✅ Sesi berhasil dihapus.');
+                    loadSesi();
+                } else alert('❌ ' + json.message);
+            } catch (e) {
+                alert('❌ Gagal terhubung.');
+            }
+        }
+
+        function showResult(msg, type) {
+            const el = document.getElementById('form-result');
+            el.textContent = msg;
+            el.className = `form-result ${type}`;
+            el.style.display = 'block';
+            setTimeout(() => {
+                el.style.display = 'none';
+            }, 5000);
+        }
+
+        // Fungsi bantuan untuk set tanggal otomatis
+        function setQuickDate(daysToAdd) {
+            const now = new Date();
+            now.setDate(now.getDate() + daysToAdd);
+
+            // Format ke YYYY-MM-DDTHH:mm
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            document.getElementById('tanggal').value = `${year}-${month}-${day}T${hours}:${minutes}`;
+        }
+
+        // Fungsi untuk memilih paket dari kartu ke form
+        function pilihPaket(nama, jumlah) {
+            document.getElementById('paket').value = nama;
+            document.getElementById('jumlah').value = jumlah;
+            // Scroll sedikit ke form jika diperlukan (sudah dihandle anchor #booking)
+        }
+
+        // Inisialisasi form saat load
+        window.addEventListener('DOMContentLoaded', () => {
+            setQuickDate(0); // Set default ke sekarang
+        });
+    </script>
+</body>
+
+</html>
